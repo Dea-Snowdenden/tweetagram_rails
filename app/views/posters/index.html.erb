@@ -1,0 +1,12 @@
+<div class="col-md-6 col-md-offset-3">
+  <div class="transitions-enabled" id="posters">
+    <% @posters.each do |poster| %>
+      <div class="box panel panel-default">
+        <%= link_to (image_tag poster.image.url, :width => 500, :height => 500), poster %>
+        <h2>
+          <%= link_to poster.title, poster %>
+        </h2>
+      </div>
+    <% end %>
+  </div>
+</div>

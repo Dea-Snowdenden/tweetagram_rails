@@ -1,0 +1,40 @@
+<div class="row" id="poster_show">
+  <div class="col-md-6 col-md-offset-3">
+    <div class="panel panel-default">
+      <div class="panel heading poster_image">
+        <%= image_tag @poster.image.url, :width => 500, :height => 500 %>
+      </div>
+      <div class="panel-body">
+        <h1>
+          <%= @poster.title %>
+        </h1>
+        <p>
+          <%= @poster.description %>
+        </p>
+      </div>
+      <div class="panel-footer">
+        <div class="row">
+          <div class="col-md-6">
+            <p class="user">
+               Posted by:
+              <%= @poster.user_id %>
+            </p>
+          </div>
+          <div class="col-md-6">
+            <div class="btn-group pull-right">
+              <%= link_to like_poster_path(@poster), method: :put, class: "btn btn-default" do %>
+                <span class="glyphicons glyphicons-fire"></span>
+                <i class="fa fa-thumbs-up" aria-hidden="true"></i>
+                <%= @poster.get_upvotes.size %>
+              <% end %>
+              <% if user_signed_in? %>
+                <%= link_to "Fix Poster", edit_poster_path, class: "btn btn-info" %>
+                <%= link_to "Delete", poster_path, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger" %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
